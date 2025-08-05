@@ -40,12 +40,6 @@ ffmpeg (for capturing RTSP streams)
 
 A pre-trained YOLOv8 model (e.g., best.pt as referenced in animal.py). You will need to provide your own model or train one.
 
-Installation
-Clone the repository:
-
-git clone https://github.com/YOUR_USERNAME/Animal-Monitoring-System.git
-cd Animal-Monitoring-System
-
 Install Python dependencies:
 
 pip install -r requirements.txt
