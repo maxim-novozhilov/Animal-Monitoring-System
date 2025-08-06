@@ -1,6 +1,6 @@
 Animal Monitoring System
 Overview
-This project implements a real-time, AI-powered animal monitoring system designed to observe and log animal behavior in various environments such as farms, zoos, or safari parks. Leveraging YOLOv8 for object detection and a robust state-tracking mechanism, the system processes live camera feeds (RTSP streams), identifies animals, tracks their movement, and infers their states (e.g., "walking," "resting," "unknown"). All detections and state changes are logged and can be pushed to a WebSocket for real-time web visualization.
+This project implements a real-time, AI-powered animal monitoring system designed to observe and log animal behavior in various environments such as homes, farms, zoos, or safari parks. Leveraging YOLOv8 for object detection and a robust state-tracking mechanism, the system processes live camera feeds (RTSP streams), identifies animals, tracks their movement, and infers their states (e.g., "walking," "resting," "unknown"). All detections and state changes are logged and can be pushed to a WebSocket for real-time web visualization.
 
 This system is built with modularity in mind, allowing for easy adaptation to different animal types and camera setups.
 
