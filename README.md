@@ -1,11 +1,11 @@
 Animal Monitoring System
 
 Overview
-This project implements a real-time, AI-powered animal monitoring system designed to observe and log animal behavior in various environments such as homes, farms, zoos, or safari parks. Leveraging YOLOv8 for object detection and a robust state-tracking mechanism, the system processes live camera feeds (RTSP streams), identifies animals, tracks their movement, and infers their states (e.g., "walking," "resting," "unknown"). All detections and state changes are logged and can be pushed to a WebSocket for real-time web visualization.
+This project implements a real-time, AI-powered animal monitoring system designed to observe and log animal behavior in various environments such as homes, farms, zoos, or safari parks. Leveraging YOLO11 for object detection and a robust state-tracking mechanism, the system processes live camera feeds (RTSP streams), identifies animals, tracks their movement, and infers their states (e.g., "walking," "resting," "unknown"). All detections and state changes are logged and can be pushed to a WebSocket for real-time web visualization.
 This system is built with modularity in mind, allowing for easy adaptation to different animal types and camera setups.
 
 Features
-Real-time Object Detection: Utilizes a pre-trained or custom-trained YOLOv8 model to detect animals in live video streams.
+Real-time Object Detection: Utilizes a pre-trained or custom-trained YOLO11 model to detect animals in live video streams.
 Multi-Camera Support: Configurable to monitor multiple RTSP camera feeds simultaneously.
 Event-Driven Processing: Monitors new image frames saved from camera feeds and processes them automatically.
 Behavioral State Tracking: Analyzes sequential frames to determine animal states (e.g., walk, rest, passive).
@@ -16,26 +16,9 @@ Real-time Web Integration: Pushes the latest animal state to a WebSocket endpoin
 Modular Design: Separate components for camera handling, detection logging, state analysis, and web communication.
 
 Project Structure
-animal.py: Handles camera stream capturing (using ffmpeg), real-time object detection with YOLOv8, and logging raw detections. It sets up file system observers to process newly saved frames.
+animal.py: Handles camera stream capturing (using ffmpeg), real-time object detection with YOLO11, and logging raw detections. It sets up file system observers to process newly saved frames.
 states.py: Monitors the detection logs from animal.py, analyzes sequential frames to determine animal states (e.g., walk, rest), and logs these state changes to a separate CSV file. It includes logic for global state confirmation and idle timeouts.
 web.py: Reads the latest animal state from the animal_states_log.csv and sends it to a specified WebSocket server for real-time updates.
-
-
-Configuration
-
-animal.py:
-Update model = YOLO("/home/.../best.pt") with the actual path to your YOLO model.
-Update base_dir = "/home/..." to your desired base directory for logs and camera output.
-Modify animal_config dictionary with your camera RTSP URLs and suffixes.
-
-states.py:
-Update BASE_DIR = "/home/..." to match the base directory in animal.py.
-Adjust PASSIVE_CAMERAS, ACTIVE_CAMERAS, MOVEMENT_THRESHOLD, CHECK_INTERVAL, CONFIRMATION_SEQUENCE_LENGTH, and IDLE_TIMEOUT_SECONDS as needed for your specific monitoring requirements.
-
-web.py:
-Update BASE_DIR = "/home/..." to match the base directory in animal.py.
-Change "wss://..." in send_websocket_request to your actual WebSocket server URL.
-
 
 Dependencies
 watchdog
@@ -44,7 +27,6 @@ pandas
 torch
 websockets
 requests
-
 
 Future Enhancements
 Web Interface: Develop a full-fledged web dashboard to visualize real-time states, historical data, and camera feeds.
